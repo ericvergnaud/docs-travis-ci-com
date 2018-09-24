@@ -100,3 +100,17 @@ default:
       javascript_session: selenium2
       browser_name: chrome
 ``` 
+
+### JUnit
+
+When using JUnit you should pass the options top the ChromeDriver constructor:
+
+```java
+ChromeOptions chromeOptions = new ChromeOptions();
+if("true".equals(System.getenv("TRAVIS"))) {
+    chromeOptions.addArguments("--headless");
+    chromeOptions.addArguments("--no-sandbox");
+}
+WebDriver driver = new ChromeDriver(chromeOptions);
+```
+
